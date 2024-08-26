@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://checw0qktlspm"]
+
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_cfsr5"]
+[ext_resource type="PackedScene" uid="uid://cxr3eqr15i3tm" path="res://entities/player/char.blend" id="2_pfxpy"]
+[ext_resource type="PackedScene" uid="uid://bp4tyvcuju2r7" path="res://controllers/gravity_movement/gravity_movement.tscn" id="2_r8mk5"]
+[ext_resource type="PackedScene" uid="uid://lkcy36xl2r1m" path="res://controllers/controller_movement/controller_movement.tscn" id="2_whemw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vjhac"]
+height = 2.024
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_cfsr5")
+
+[node name="GravityMovement" parent="." instance=ExtResource("2_r8mk5")]
+
+[node name="char" parent="." instance=ExtResource("2_pfxpy")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.328723, 0)
+shape = SubResource("CapsuleShape3D_vjhac")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true
+
+[node name="ControllerMovement" parent="." instance=ExtResource("2_whemw")]
+speed = 5
+
+[connection signal="ready" from="." to="." method="_on_ready"]

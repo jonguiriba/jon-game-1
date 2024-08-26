@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp4tyvcuju2r7"]
+
+[ext_resource type="Script" path="res://controllers/gravity_movement/gravity_movement.gd" id="1_1khcr"]
+
+[node name="GravityMovement" type="Node"]
+script = ExtResource("1_1khcr")

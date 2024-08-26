@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfditk3yxexno"]
+
+[ext_resource type="PackedScene" uid="uid://d5tho25tpwpw" path="res://scenes/level_1/room1/room1.blend" id="1_bhrys"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_q3foy"]
+vertices = PackedVector3Array(4, 1, 4, 4, 1, 1.25, 3.5, 1, 1.75, 3.5, 1, -1.5, 4, 1, -1, 4, 1, -4, 1.75, 1, 1.75, -0.25, 1, 4, -2.5, 1, -2.25, -0.75, 1, -2.25, -4, 1, -4, 1, 1, 1, 0, 1, -1.5, 1, 1, -0.75, -4, 1, 4, -3, 1, 4, -3.25, 1, -1.5, 1.75, 1, -1.5)
+polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 3), PackedInt32Array(2, 0, 6), PackedInt32Array(6, 0, 7), PackedInt32Array(10, 9, 8), PackedInt32Array(6, 7, 11), PackedInt32Array(13, 11, 12), PackedInt32Array(12, 11, 7), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 10), PackedInt32Array(13, 12, 17), PackedInt32Array(17, 12, 9), PackedInt32Array(10, 8, 16), PackedInt32Array(3, 17, 5), PackedInt32Array(5, 17, 9), PackedInt32Array(5, 9, 10)]
+cell_height = 0.5
+agent_radius = 1.0
+
+[node name="Room1" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.574285, 0)
+navigation_mesh = SubResource("NavigationMesh_q3foy")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62942, 0.621832, 0)
+use_collision = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61428, 0.669378, 1.19362)
+use_collision = true
+size = Vector3(1, 1, 4.49023)
+
+[node name="room1" parent="NavigationRegion3D" instance=ExtResource("1_bhrys")]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgk0l6ptjpmd0"]
+
+[ext_resource type="Script" path="res://entities/white_lady/white_lady.gd" id="1_lxpek"]
+[ext_resource type="PackedScene" uid="uid://daonu4td0oeme" path="res://controllers/chase_movement/chase_movement.tscn" id="3_dv3gb"]
+[ext_resource type="PackedScene" uid="uid://cxr3eqr15i3tm" path="res://entities/player/char.blend" id="3_hmnai"]
+[ext_resource type="PackedScene" uid="uid://bp4tyvcuju2r7" path="res://controllers/gravity_movement/gravity_movement.tscn" id="4_uooau"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vjhac"]
+height = 2.024
+
+[node name="WhiteLady" type="CharacterBody3D"]
+script = ExtResource("1_lxpek")
+
+[node name="char" parent="." instance=ExtResource("3_hmnai")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.328723, 0)
+shape = SubResource("CapsuleShape3D_vjhac")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true
+
+[node name="ChaseMovement" parent="." instance=ExtResource("3_dv3gb")]
+
+[node name="GravityMovement" parent="." instance=ExtResource("4_uooau")]

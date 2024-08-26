@@ -1,11 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://dy7myyrl7qpvh"]
+[gd_scene load_steps=6 format=3 uid="uid://di0lxtq602dvy"]
 
 [ext_resource type="Script" path="res://scenes/level_1/level_1.gd" id="1_fx7b8"]
-[ext_resource type="Texture2D" uid="uid://d2ntmjwhvfhd5" path="res://imgs/level1/bg.png" id="2_tajw2"]
+[ext_resource type="PackedScene" uid="uid://checw0qktlspm" path="res://entities/player/player.tscn" id="3_fgvc7"]
+[ext_resource type="PackedScene" uid="uid://cfditk3yxexno" path="res://scenes/level_1/room1/room1.tscn" id="3_ksd3m"]
+[ext_resource type="PackedScene" uid="uid://dgk0l6ptjpmd0" path="res://entities/white_lady/white_lady.tscn" id="4_kuahq"]
 
-[node name="Level1" type="Node2D"]
+[sub_resource type="Environment" id="Environment_qckxb"]
+ambient_light_energy = 3.0
+
+[node name="level_1" type="Node3D"]
 script = ExtResource("1_fx7b8")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_tajw2")
-centered = false
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qckxb")
+
+[node name="player" parent="." instance=ExtResource("3_fgvc7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.36681, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.870974, -0.204204, 0.446884, -2.35825e-09, 0.909541, 0.415614, -0.49133, -0.361989, 0.792186, 2.67575, 3.31237, 4.20648)
+current = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33826, 2.91432, 2.89538)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.45973, 3.51941)
+
+[node name="WhiteLady" parent="." instance=ExtResource("4_kuahq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.952304, 4.20062, 3.48692)
+
+[node name="Room1" parent="." instance=ExtResource("3_ksd3m")]
